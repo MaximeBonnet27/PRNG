@@ -1,8 +1,16 @@
-public class Main {
-	public static void main(String ... args){
+import java.io.*;
 
-		Generator generator = new Generator(System.currentTimeMillis());
-		System.out.println("Generator's period : " + generator.getSeedPeriod());
+public class Main {
+	public static void main(String ... args) throws Exception{
+		long seed = Long.parseLong(args[0]);
+		long repeats = Long.parseLong(args[1]);
+		String filename = args[2];
+		Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "utf-8"));
+		Generator generator = new Generator(seed);
+		for(int i = 0; i < repeats; ++i){
+			writer.write(generator.generateNumber() + "\n");
+		}
+		writer.close();
 	}
 }
 

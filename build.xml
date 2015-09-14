@@ -18,12 +18,20 @@
 
 	<target name="compile" depends="init">
 		<javac srcdir="${src}" destdir="${build}"
-		       includeantruntime="false" />
+			includeantruntime="false" />
 
 	</target>
 
 	<target name="run" depends="compile">
-		<java classname="Main" classpath="${build}" />
+		<java classname="MainTests" classpath="${build}" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="prng.jar" basedir="${build}">
+				<manifest>
+					<attribute name="Main-Class" value="Main"/>
+				</manifest>
+			</jar>
 	</target>
 
 </project>

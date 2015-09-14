@@ -2,29 +2,62 @@ public class Generator {
 
 	private long seed;
 	private long previousValue;
-	
+	private int n;
 	public Generator(long seed){
 		this.seed = seed;
 		this.previousValue = seed;
-	}
-
-	public long generateDigit(){
-		long value = (previousValue + 1) % 10;
-		previousValue = value;
-		return value;
+		this.n = 0;
 	}
 
 	public long generateNumber(){
-		return (generateDigit() * generateDigit() * 100 
-				+ generateDigit() * generateDigit() * 10 
-				+ generateDigit() * generateDigit()) % 1000;
-	}
+		long value;
+		if(n % 82 == 0){
+			value = method2();
+		}
+		else{
+			value = method1();
+		}
+		n++;
+		previousValue = value;
+		return value;
 
+	}
+	// Period = 82
+	private long method1(){
+		long x = previousValue % 10;
+		previousValue /= 10;
+		long y = previousValue % 100;
+		previousValue /= 10;
+		long z = previousValue % 1000;
+		long value = x * 100 + z * 10 + y; // Period = 82
+		return value % 1000;
+	}
+	// Period = 52
+	private long method2(){
+		String binary = Long.toBinaryString(previousValue + 1);
+		StringBuffer sb = new StringBuffer();
+		int count = 0;
+		for(int i = 0; i < binary.length(); ++i){
+			if(binary.charAt(i) == '1'){
+				count++;
+				if(count % 2 == 1){
+					sb.append("1");
+				}
+				else{
+					sb.append("2");
+				}
+			}
+			else {
+				sb.append("0");
+			}
+			
+		}
+		return Long.parseLong(sb.toString(), 3) % 1000;
+	}
 	public long getSeedPeriod(){
 		long[] values = new long[1001];
 		for(int i = 0; i < 1001; ++i){
 			values[i] = generateNumber();
-			System.out.println(values[i]);
 		}	
 		for(int i = 0; i < 1001; ++i){
 			for(int j = i + 1; j < 1001; ++j){
@@ -34,6 +67,23 @@ public class Generator {
 			}
 		}
 		return -1;
+	}
+
+	public long getUniqueCount(){
+		boolean[] present = new boolean[1000];
+		for(int i = 0; i < 1000; ++i){
+			present[i] = false;
+		}
+		for(int i = 0; i < 1000; ++i){
+			present[(int) generateNumber()] = true;
+		}
+		int sum = 0;
+		for(int i = 0; i < 1000; ++i){
+			if(present[i]){
+				sum++;
+			}
+		}
+		return sum;
 	}
 
 }
