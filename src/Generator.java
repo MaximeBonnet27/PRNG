@@ -28,8 +28,8 @@ public class Generator {
 		previousValue /= 10;
 		long y = previousValue % 100;
 		previousValue /= 10;
-		long z = previousValue % 1000;
-		long value = x * 100 + z * 10 + y; // Period = 82
+		long z = previousValue % 10;
+		long value = x * 100 + z * 10 + y;
 		return value % 1000;
 	}
 	// Period = 52

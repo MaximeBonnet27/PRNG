@@ -26,10 +26,18 @@
 		<java classname="MainTests" classpath="${build}" />
 	</target>
 
-	<target name="jar" depends="compile">
+	<target name="jar_generator" depends="compile">
 		<jar destfile="prng.jar" basedir="${build}">
 				<manifest>
 					<attribute name="Main-Class" value="Main"/>
+				</manifest>
+			</jar>
+	</target>
+	
+	<target name="jar_analyzer" depends="compile">
+		<jar destfile="analyzer.jar" basedir="${build}">
+				<manifest>
+					<attribute name="Main-Class" value="Analyser"/>
 				</manifest>
 			</jar>
 	</target>
