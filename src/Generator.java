@@ -11,7 +11,7 @@ public class Generator {
 
 	public long generateNumber(){
 		long value;
-		if(n % 82 == 0){
+		if(n % 82 == 0 || previousValue == 988 || previousValue == 662 || previousValue == 326){
 			value = method2();
 		}
 		else{
@@ -30,6 +30,9 @@ public class Generator {
 		previousValue /= 10;
 		long z = previousValue % 10;
 		long value = x * 100 + z * 10 + y;
+		if(value == 0){
+			value = seed + n;
+		}
 		return value % 1000;
 	}
 	// Period = 52
@@ -40,7 +43,7 @@ public class Generator {
 		for(int i = 0; i < binary.length(); ++i){
 			if(binary.charAt(i) == '1'){
 				count++;
-				if(count % 2 == 1){
+				if((n +count) % 2 == 1){
 					sb.append("1");
 				}
 				else{
