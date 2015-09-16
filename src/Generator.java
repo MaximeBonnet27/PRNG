@@ -3,6 +3,7 @@ public class Generator {
 	private long seed;
 	private long previousValue;
 	private int n;
+	
 	public Generator(long seed){
 		this.seed = seed;
 		this.previousValue = seed;
