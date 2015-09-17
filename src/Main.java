@@ -2,9 +2,9 @@ import java.io.*;
 
 public class Main {
 	public static void main(String ... args) throws Exception{
-		System.out.println("Generator : Start !");
+		//System.out.println("Generator : Start !");
 
-		long seed = Long.parseLong(args[0]);
+		int seed = Integer.parseInt(args[0]);
 		long repeats = Long.parseLong(args[1]);
 		String filename = args[2];
 
@@ -17,7 +17,7 @@ public class Main {
 
 		writer.close();
 
-		System.out.println("Generator : Done !");
+		//System.out.println("Generator : Done !");
 	}
 }
 

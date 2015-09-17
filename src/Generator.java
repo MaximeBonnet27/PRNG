@@ -1,17 +1,33 @@
 public class Generator {
 
-	private long seed;
-	private long previousValue;
+	private int seed;
+	private int previousValue;
 	private int n;
 	
-	public Generator(long seed){
+	public Generator(int seed){
 		this.seed = seed;
 		this.previousValue = seed;
 		this.n = 0;
 	}
 
 	public long generateNumber(){
-		long value;
+		//previousValue=(int)(73*previousValue+13)%1000;
+	/*	int res=previousValue;
+		int a=res/100;
+		res%=100;
+		int b=res/10;
+		res%=10;
+		previousValue=((a+b+33)*previousValue+(res+a+33))%1000;*/
+		
+		previousValue = previousValue*6854684+(previousValue%1354)*6461+156;
+		String s = previousValue+"";
+		int longueur = s.length();
+		previousValue = Integer.valueOf(s.substring(longueur/2-1, longueur/2+2));
+		return previousValue;
+	}
+	/*
+	public int generateNumber2(){
+		int value;
 		if(n % 82 == 0 || previousValue == 988 || previousValue == 662 || previousValue == 326){
 			value = method2();
 		}
@@ -23,21 +39,21 @@ public class Generator {
 		return value;
 
 	}
-	// Period = 82
-	private long method1(){
-		long x = previousValue % 10;
+	/ Period = 82
+	private int method1(){
+		int x = previousValue % 10;
 		previousValue /= 10;
-		long y = previousValue % 100;
+		int y = previousValue % 100;
 		previousValue /= 10;
 		long z = previousValue % 10;
-		long value = x * 100 + z * 10 + y;
+		int value = x * 100 + z * 10 + y;
 		if(value == 0){
 			value = seed + n;
 		}
 		return value % 1000;
 	}
-	// Period = 52
-	private long method2(){
+	/ Period = 52
+	private int method2(){
 		String binary = Long.toBinaryString(previousValue + 1);
 		StringBuffer sb = new StringBuffer();
 		int count = 0;
@@ -89,5 +105,5 @@ public class Generator {
 		}
 		return sum;
 	}
-
+*/
 }
