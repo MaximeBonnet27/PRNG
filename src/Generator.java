@@ -17,13 +17,21 @@ public class Generator {
 		res%=100;
 		int b=res/10;
 		res%=10;
-		previousValue=((a+b+33)*previousValue+(res+a+33))%1000;*/
+		previousValue=((a+b+33)*previousValue+(res+a+33))%1000;
 		
 		previousValue = previousValue*6854684+(previousValue%1354)*6461+156;
 		String s = previousValue+"";
 		int longueur = s.length();
 		previousValue = Integer.valueOf(s.substring(longueur/2-1, longueur/2+2));
 		return previousValue;
+		*/
+		int a = -11;
+		int b = 21;
+		int c = 1;
+		int value = ((int) Math.pow((previousValue * a + b), c ) % 1000);
+		previousValue = value;
+		
+		return value;
 	}
 	/*
 	public int generateNumber2(){

@@ -1,7 +1,7 @@
 public class MainTests {
 
 	public static void main(String ... args){
-		long seed = 998;
+		int seed = 998;
 		Generator generator = new Generator(seed);
 		long sum = 0;
 		for(int i = 0; i < 1000; ++i){

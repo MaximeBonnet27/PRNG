@@ -26,6 +26,10 @@
 		<java classname="MainTests" classpath="${build}" />
 	</target>
 
+	<target name="genetic" depends="compile">
+		<java classname="TestGenetique" classpath="${build}" />
+	</target>
+
 	<target name="jar_generator" depends="compile">
 		<jar destfile="prng.jar" basedir="${build}">
 				<manifest>
