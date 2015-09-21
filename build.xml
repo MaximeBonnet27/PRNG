@@ -27,7 +27,11 @@
 	</target>
 
 	<target name="genetic" depends="compile">
-		<java classname="TestGenetique" classpath="${build}" />
+		<jar destfile="genetic.jar" basedir="${build}">
+						<manifest>
+							<attribute name="Main-Class" value="genetic.TestGenetique"/>
+						</manifest>
+					</jar>
 	</target>
 
 	<target name="jar_generator" depends="compile">
