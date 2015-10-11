@@ -2,7 +2,6 @@ import java.io.*;
 
 public class Main {
 	public static void main(String ... args) throws Exception{
-		//System.out.println("Generator : Start !");
 
 		int seed = Integer.parseInt(args[0]);
 		long repeats = Long.parseLong(args[1]);
@@ -17,7 +16,6 @@ public class Main {
 
 		writer.close();
 
-		//System.out.println("Generator : Done !");
 	}
 }
 

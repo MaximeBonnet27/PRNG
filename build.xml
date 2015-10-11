@@ -35,7 +35,7 @@
 	</target>
 
 	<target name="jar_generator" depends="compile">
-		<jar destfile="prng.jar" basedir="${build}">
+		<jar destfile="generator.jar" basedir="${build}">
 				<manifest>
 					<attribute name="Main-Class" value="Main"/>
 				</manifest>
@@ -49,5 +49,7 @@
 				</manifest>
 			</jar>
 	</target>
-
+	<target name="dist" depends="init,clean" description="Generer la distribution">
+	    <jar basedir="." jarfile="../BONNET_LEOTURE.jar"/>
+	  </target>
 </project>

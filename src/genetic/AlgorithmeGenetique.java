@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class AlgorithmeGenetique{
 
-	private final int nombreDeGenerations = 100000; //100*100
+	private final int nombreDeGenerations = 100000;
 	private ArrayList<Individu> best;
 	private int bestPeriode;
 
@@ -16,9 +16,9 @@ public class AlgorithmeGenetique{
 
 	public ArrayList<Individu> calculer(){
 		for(int i=0;i<nombreDeGenerations;i++){
-			System.out.print(printProgress(i+1,nombreDeGenerations) +"periode : "+bestPeriode +"size : "+best.size());
+			System.out.print(printProgress(i+1,nombreDeGenerations) +" periode : "+bestPeriode +" size : "+best.size());
 			Individu individu=new Individu();
-			if(individu.getPeriode()>bestPeriode){
+			if(individu.getPeriode()>=bestPeriode){
 				bestPeriode=individu.getPeriode();
 				filtre();
 				best.add(individu);

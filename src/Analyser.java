@@ -7,7 +7,6 @@ import java.util.HashSet;
 public class Analyser {
 
 	public static void main(String ... args) throws Exception {
-		String programName = args[0];
 		
 		String outputFilename = "period.txt";
 		String resultsFile = "results.txt";
@@ -25,7 +24,7 @@ public class Analyser {
 			String info=printProgress(i,1000);
 			System.out.write(info.getBytes());
 
-			ProcessBuilder builder = new ProcessBuilder("java", "-jar", "prng.jar", i + "", "1001", resultsFile);
+			ProcessBuilder builder = new ProcessBuilder("java", "-jar", "generator.jar", i + "", "1001", resultsFile);
 			Process p = builder.start();
 			
 			BufferedReader stdIn=new BufferedReader(new InputStreamReader(p.getInputStream()));
